@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twitch TV</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Vista: login -->
+<section id="view-login" class="view hidden">
+  <div class="login-box">
+    <svg class="logo big" viewBox="0 0 64 64" aria-hidden="true">
+      <rect width="64" height="64" rx="14" fill="#9147ff"/>
+      <path d="M14 14h36v26H36l-8 8v-8H14z" fill="#fff"/>
+      <rect x="26" y="22" width="4" height="10" fill="#9147ff"/>
+      <rect x="35" y="22" width="4" height="10" fill="#9147ff"/>
+    </svg>
+    <h1>Twitch TV</h1>
+    <p>Inicia sesión con tu cuenta para ver canales en vivo.</p>
+    <button id="btn-login" class="btn" tabindex="0">Iniciar sesión</button>
+    <p id="login-error" class="error"></p>
+  </div>
+</section>
+
+<!-- Vista: navegación -->
+<section id="view-browse" class="view hidden">
+  <header class="topbar">
+    <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
+      <rect width="64" height="64" rx="14" fill="#9147ff"/>
+      <path d="M14 14h36v26H36l-8 8v-8H14z" fill="#fff"/>
+      <rect x="26" y="22" width="4" height="10" fill="#9147ff"/>
+      <rect x="35" y="22" width="4" height="10" fill="#9147ff"/>
+    </svg>
+    <nav id="tabs">
+      <button class="tab" data-tab="home" tabindex="0">Inicio</button>
+      <button class="tab" data-tab="following" tabindex="0">Siguiendo</button>
+      <button class="tab" data-tab="browse" tabindex="0">Explorar</button>
+    </nav>
+    <div class="search">
+      <input id="search-input" type="text" placeholder="Buscar canales en vivo" autocomplete="off">
+      <button id="btn-search" class="search-btn" tabindex="0" aria-label="Buscar">
+        <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true">
+          <circle cx="10" cy="10" r="6.5" fill="none" stroke="#efeff1" stroke-width="2.4"/>
+          <line x1="15" y1="15" x2="21" y2="21" stroke="#efeff1" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <button id="btn-logout" class="tab small" tabindex="0">Salir</button>
+  </header>
+
+  <div class="layout">
+    <aside id="sidebar" class="sidebar">
+      <div class="side-head">Siguiendo</div>
+      <div id="side-followed"></div>
+      <div class="side-head">Recomendados</div>
+      <div id="side-recs"></div>
+    </aside>
+
+    <main class="main">
+      <h2 id="section-title"></h2>
+      <div id="grid" class="grid"></div>
+      <p id="status" class="status"></p>
+      <div class="more-row"><button id="btn-more" class="btn hidden" tabindex="0">Mostrar más</button></div>
+    </main>
+  </div>
+</section>
+
+<!-- Vista: reproductor -->
+<section id="view-player" class="view hidden">
+  <div class="player-main">
+    <div class="video-col">
+      <div id="player-embed"></div>
+      <div class="info-bar">
+        <img id="pi-avatar" class="avatar big" data-uid="" alt="">
+        <div class="pi-text">
+          <div id="pi-name" class="pi-name"></div>
+          <div id="pi-title" class="pi-title"></div>
+          <div id="pi-meta" class="pi-meta"></div>
+        </div>
+        <div class="pi-actions">
+          <button id="btn-chat" class="tab small" tabindex="0">Ocultar chat</button>
+          <button id="btn-back" class="tab small" tabindex="0">&larr; Volver</button>
+        </div>
+      </div>
+    </div>
+    <iframe id="chat-frame" class="hidden" title="Chat" tabindex="-1"></iframe>
+  </div>
+</section>
+
+<script src="https://embed.twitch.tv/embed/v1.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
